@@ -1,7 +1,6 @@
+import SnippetCard from "@/components/snippet-card";
 import { prisma } from "@/db/prisma";
-
 import { Code2 } from "lucide-react";
-import Link from "next/link";
 
 async function getSnippets() {
   try {
@@ -41,34 +40,12 @@ export default async function Homepage() {
           <p className="text-sm text-gray-500">Click the New Snippet button in the header to get started.</p>
         </div>
       ) : (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {snippets.map((snippet) => (
-            <Link 
+            <SnippetCard 
               key={snippet.id} 
-              href={`/snippet/${snippet.id}`}
-              className="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 hover:border-gray-500 transition-colors"
-            >
-              <div className="p-4">
-                <h2 className="font-medium text-lg mb-2 text-white">{snippet.description}</h2>
-                <div className="bg-gray-900 rounded p-3 mb-3 overflow-hidden h-24">
-                  <pre className="text-xs text-gray-300 font-mono">
-                    <code>{snippet.code.length > 150 ? snippet.code.substring(0, 150) + '...' : snippet.code}</code>
-                  </pre>
-                </div>
-                <div className="flex justify-between items-center text-sm">
-                  <span className="text-blue-400">{snippet.language}</span>
-                 
-                </div>
-                <div className="mt-3 pt-3 border-t border-gray-700 flex justify-between items-center">
-                  <div className="text-sm text-gray-400">
-                    by {snippet.user.name}
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-gray-500">{snippet.likes} likes</span>
-                  </div>
-                </div>
-              </div>
-            </Link>
+              snippet={snippet} 
+            />
           ))}
         </div>
       )}
