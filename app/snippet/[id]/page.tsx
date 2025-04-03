@@ -28,20 +28,10 @@ async function getSnippet(id: string) {
   }
 }
 
-interface SnippetPageProps {
-  params: {
-    id: string;
-  };
-}
-
-export default async function SnippetPage({ params }: SnippetPageProps) {
-  // Parse the id parameter before using it
-  const id = params?.id;
+export default async function Page({ params }: { params: { id: string } }) {
+  const id = params.id;
   
-  if (!id) {
-    notFound();
-  }
-  
+  // Fetch the snippet data
   const snippet = await getSnippet(id);
   
   // If snippet doesn't exist, show 404 page
@@ -112,4 +102,4 @@ export default async function SnippetPage({ params }: SnippetPageProps) {
       </div>
     </main>
   );
-} 
+}

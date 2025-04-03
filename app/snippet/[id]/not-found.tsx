@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { FileX2 } from "lucide-react";
 
-export default function SnippetNotFound() {
+export default function NotFound() {
   return (
     <div className="container mx-auto max-w-md px-4 py-16">
       <div className="bg-gray-800 rounded-lg p-8 text-center">
