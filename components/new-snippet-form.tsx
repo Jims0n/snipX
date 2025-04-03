@@ -76,7 +76,7 @@ const NewSnippetForm = ({ onSubmit, onCancel, isLoading = false }: NewSnippetFor
               <Textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                placeholder="What's this snippet about? Be descriptive so you can find it later."
+                placeholder="What's this snippet about?"
                 className="w-full bg-gray-700 text-white rounded-lg p-3 outline-none resize-none border border-gray-600 focus:border-blue-500 transition-colors"
                 rows={2}
               />
